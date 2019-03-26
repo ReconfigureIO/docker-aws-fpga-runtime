@@ -1,4 +1,4 @@
-FROM debian:jessie
+FROM ubuntu:18.04
 ENV AWS_FPGA_VERSION=1.3.0
 RUN apt-get update && apt-get install -y --no-install-recommends \
 		ca-certificates \
