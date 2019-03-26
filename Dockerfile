@@ -1,5 +1,5 @@
 FROM ubuntu:18.04
-ENV AWS_FPGA_VERSION=1.3.0
+ENV AWS_FPGA_VERSION=1.4.5
 RUN apt-get update && apt-get install -y --no-install-recommends \
 		ca-certificates \
 		make \
@@ -10,5 +10,5 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
 	&& rm -rf /var/lib/apt/lists/* && ln -s /usr/lib/ /usr/lib64 \
     && cd /tmp \
     && wget -q -O - https://github.com/aws/aws-fpga/archive/v$AWS_FPGA_VERSION.tar.gz | tar -xz \
-    && SDK_DIR=/tmp/aws-fpga-$AWS_FPGA_VERSION/sdk /tmp/aws-fpga-$AWS_FPGA_VERSION/sdk_setup.sh \
+    && SDK_DIR=/tmp/aws-fpga-$AWS_FPGA_VERSION/sdk bash -c "source /tmp/aws-fpga-$AWS_FPGA_VERSION/sdk_setup.sh" \
     && rm -rf /tmp/aws-fpga-$AWS_FPGA_VERSION
